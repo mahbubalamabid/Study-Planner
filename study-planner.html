@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Study Planner: Module 38 to 48</title>
+  <style>
+    :root {
+      --bg: #f6f5fb;
+      --cd: #fff;
+      --tx: #1d1b2e;
+      --mu: #6b6880;
+      --ac: #6d4aff;
+      --ok: #16a34a;
+      --wa: #d97706;
+      --bd: #e3e0f0;
+      --no: #dc2626;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px)
+    }
+
+    @media(prefers-color-scheme:dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #150f26;
+        --cd: #211838;
+        --tx: #efeaff;
+        --mu: #a59fc0;
+        --ac: #9a82ff;
+        --ok: #4ade80;
+        --wa: #fbbf24;
+        --bd: #34294f;
+        --no: #f87171
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #150f26;
+      --cd: #211838;
+      --tx: #efeaff;
+      --mu: #a59fc0;
+      --ac: #9a82ff;
+      --ok: #4ade80;
+      --wa: #fbbf24;
+      --bd: #34294f;
+      --no: #f87171
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px)
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--tx);
+      font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif
+    }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 16px 14px 60px
+    }
+
+    h1 {
+      font-size: 20px;
+      margin: 4px 0 2px
+    }
+
+    .sub {
+      color: var(--mu);
+      font-size: 13px;
+      margin-bottom: 14px
+    }
+
+    .g {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 12px
+    }
+
+    @media(min-width:560px) {
+      .g {
+        grid-template-columns: repeat(4, 1fr)
+      }
+    }
+
+    .c {
+      background: var(--cd);
+      border: 1px solid var(--bd);
+      border-radius: 12px;
+      padding: 12px
+    }
+
+    .n {
+      font-size: 22px;
+      font-weight: 700
+    }
+
+    .l {
+      font-size: 12px;
+      color: var(--mu)
+    }
+
+    .bar {
+      height: 8px;
+      background: var(--bd);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-top: 6px
+    }
+
+    .bar i {
+      display: block;
+      height: 100%;
+      background: var(--ac);
+      transition: width .3s
+    }
+
+    .box {
+      border-left: 4px solid var(--ac);
+      margin-bottom: 12px;
+      font-size: 14px
+    }
+
+    .box.w {
+      border-color: var(--wa)
+    }
+
+    .box.r {
+      border-color: var(--no)
+    }
+
+    details.day {
+      background: var(--cd);
+      border: 1px solid var(--bd);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      overflow: hidden
+    }
+
+    details.day.today {
+      border-color: var(--ac);
+      box-shadow: 0 0 0 1px var(--ac)
+    }
+
+    summary {
+      padding: 12px;
+      cursor: pointer;
+      list-style: none
+    }
+
+    summary::-webkit-details-marker {
+      display: none
+    }
+
+    .r1 {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center
+    }
+
+    .tt {
+      font-size: 13px;
+      color: var(--mu);
+      margin-top: 2px
+    }
+
+    .bd {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      border: 1px solid var(--bd);
+      white-space: nowrap
+    }
+
+    .bd.ok {
+      color: var(--ok);
+      border-color: var(--ok)
+    }
+
+    .bd.t {
+      color: var(--ac);
+      border-color: var(--ac)
+    }
+
+    .bd.m {
+      color: var(--no);
+      border-color: var(--no)
+    }
+
+    .bd.f {
+      color: var(--wa);
+      border-color: var(--wa)
+    }
+
+    .tk {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 10px 12px;
+      border-top: 1px solid var(--bd);
+      cursor: pointer
+    }
+
+    .tk input {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      accent-color: var(--ac);
+      flex: none
+    }
+
+    .tk.d span {
+      text-decoration: line-through;
+      color: var(--mu)
+    }
+
+    .tk em {
+      display: block;
+      font-style: normal;
+      font-size: 12px;
+      color: var(--mu)
+    }
+
+    .hr {
+      padding: 10px 12px;
+      border-top: 1px solid var(--bd);
+      font-size: 13px;
+      color: var(--mu)
+    }
+
+    .hr input {
+      width: 60px;
+      padding: 4px;
+      border-radius: 6px;
+      border: 1px solid var(--bd);
+      background: var(--bg);
+      color: var(--tx)
+    }
+
+    .hr p {
+      margin: 6px 0 0;
+      color: var(--wa)
+    }
+
+    .tm2 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center
+    }
+
+    .tm2 b {
+      color: var(--tx);
+      font-variant-numeric: tabular-nums
+    }
+
+    button {
+      background: var(--ac);
+      color: #fff;
+      border: 0;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 13px;
+      cursor: pointer;
+      margin: 4px 4px 0 0
+    }
+
+    button.s {
+      background: transparent;
+      color: var(--mu);
+      border: 1px solid var(--bd)
+    }
+
+    textarea {
+      width: 100%;
+      height: 60px;
+      background: var(--bg);
+      color: var(--tx);
+      border: 1px solid var(--bd);
+      border-radius: 8px;
+      padding: 6px;
+      font-size: 12px
+    }
+
+    ul {
+      margin: 6px 0 0;
+      padding-left: 18px
+    }
+
+    h2 {
+      font-size: 15px;
+      margin: 18px 0 8px
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>Study Planner: Module 38 to 48</h1>
+    <div class="sub" id="sub"></div>
+    <div class="g" id="stats"></div>
+    <h2 style="margin-top:6px">Time worked</h2>
+    <div class="g" id="tm"></div>
+    <div id="alerts"></div>
+    <h2>Daily plan (tap a day to open it)</h2>
+    <div id="days"></div>
+    <div class="c box" style="margin-top:14px"><b>Oct 30:</b> Module 49 + Assignment 8 (60 marks) comes. Deadline: 03
+      Nov 11:59 PM (60 marks) / 04 Nov 11:59 PM (50 marks).</div>
+    <h2>Rules that keep you safe</h2>
+    <div class="c">
+      <ul>
+        <li>Exam day or low-time day: do only the <b>must</b> tasks (watch + assignment). Watch at 1.25x speed if
+          needed.</li>
+        <li>Practice is the real learning. Never delete it, only move it to a catch-up day.</li>
+        <li>Catch-up slots (Oct 25, 26, 27) and the full day Oct 28 are your safety net. Use them first for missed work.
+        </li>
+        <li>Oct 29 is an extra buffer day before the new assignment. Try not to use it.</li>
+        <li>Push code to GitHub daily and sleep well. Tired study is slow study.</li>
+      </ul>
+    </div>
+    <h2>Backup / move progress to another device</h2>
+    <div class="c">
+      <div class="l">Your progress is saved in this browser only. To use phone and desktop together, copy the code and
+        import it on the other device.</div>
+      <textarea id="bk"></textarea><button id="ex">Export code</button><button id="im" class="s">Import
+        code</button><button id="rs" class="s">Reset all</button><span id="msg" class="l"></span>
+    </div>
+  </main>
+  <script>
+    const CU = ["Catch-up slot: finish missed tasks, else revise", 90, 0, ""];
+    const R = ["Push code to GitHub + write 5 lines of notes", 20, 0, ""];
+    const W = (m, n, mn) => ["Watch Module " + m + ": " + n, mn, 1, "M" + m], P = (m, mn) => ["Practice M" + m + ": code along, then rebuild alone", mn, 0, "M" + m];
+    const D = [
+      [15, "Module 34 + Module 35 (watch)", 0, [W(34, "Next.js Rendering Basics (1h 32m)", 92), P(34, 60), W(35, "Advanced Data Fetching and UI Integration (2h 2m)", 122), R]],
+      [16, "Module 35 practice + Module 36 (watch)", 0, [P(35, 90), W(36, "Project with Next.js and TypeScript (2h 52m)", 172), R]],
+      [17, "Module 36 practice + Assignment 6 (part 1)", 0, [P(36, 120), ["Watch Module 37 video: Assignment 6 (19m)", 19, 1, "A6"], ["Assignment 6, part 1", 120, 1, "A6"], R]],
+      [18, "Assignment 6 (finish) + Module 38 (watch)", 0, [["Assignment 6, finish and submit", 150, 1, "A6"], W(38, "BetterAuth in Next.js (2h 8m)", 128), R]],
+      [19, "Module 38 practice + Module 39", 0, [P(38, 90), W(39, "Profile, Password and Email (2h 7m)", 127), P(39, 90), R]],
+      [20, "Module 40", 0, [W(40, "Next.js Auth Project Part 1 (2h 18m)", 138), P(40, 120), R]],
+      [21, "Module 41", 0, [W(41, "Next.js Auth Project Part 2 (2h 23m)", 143), P(41, 120), R]],
+      [22, "Assignment 7 (part 1) + Module 43 (watch)", 0, [["Watch Module 42 video: Assignment 7 (23m)", 23, 1, "A7"], ["Assignment 7, part 1", 120, 1, "A7"], W(43, "Node.js and Express (1h 50m)", 110), R]],
+      [23, "Assignment 7 (finish) + Module 43 practice + Module 44 (watch)", 0, [["Assignment 7, finish and submit", 120, 1, "A7"], P(43, 75), W(44, "REST API and CRUD with Express + MongoDB (about 2h)", 120), R]],
+      [24, "Module 44 practice + Module 45", 0, [P(44, 120), W(45, "MongoDB Operators and Queries (about 2h)", 120), P(45, 90), R]],
+      [25, "Module 46 + catch-up slot", 90, [W(46, "Project Setup and Destination CRUD (about 2h)", 120), P(46, 120), CU, R]],
+      [26, "Module 47 + catch-up slot", 90, [W(47, "Booking System and Authentication (about 2h)", 120), P(47, 120), CU, R]],
+      [27, "Module 48 + catch-up slot", 90, [W(48, "JWT, Security and Deployment (about 2h)", 120), P(48, 120), CU, R]],
+      [28, "Final catch-up and revision day", 300, [["Finish ALL remaining tasks", 150, 1, ""], ["Revise weak topics (auth, Express, MongoDB)", 90, 0, ""], ["Re-watch one hard part", 60, 0, ""]]],
+      [29, "Optional buffer day (before Assignment 8)", 180, [["Rest or light revision", 120, 0, ""]]]];
+    const K = "abid-plan-v1"; let S = { c: {}, h: {} }, O = {};
+    try { S = JSON.parse(localStorage.getItem(K)) || S } catch (e) { }
+    const sv = () => { try { localStorage.setItem(K, JSON.stringify(S)) } catch (e) { } };
+    const f = m => (m >= 60 ? Math.floor(m / 60) + "h " : "") + (m % 60 ? m % 60 + "m" : "");
+    const dt = d => new Date(2026, 9, d).toLocaleDateString("en", { weekday: "short" });
+    const now = new Date(); let td = now < new Date(2026, 9, 15) ? 15 : (now.getFullYear() == 2026 && now.getMonth() == 9 ? Math.min(now.getDate(), 29) : 29);
+    if (now >= new Date(2026, 9, 30)) td = 29;
+    const $ = id => document.getElementById(id);
+    function render() {
+      const all = []; D.forEach(([d, t, fx, ts]) => ts.forEach((x, i) => all.push({ d, id: d + "-" + i, x, fx })));
+      const core = all.filter(a => a.d <= 28), tot = core.reduce((s, a) => s + a.x[1], 0), dn = core.filter(a => S.c[a.id]).reduce((s, a) => s + a.x[1], 0);
+      const grp = {}; all.forEach(a => { const g = a.x[3]; if (g) (grp[g] = grp[g] || []).push(a) });
+      let mo = 0, as = 0; for (const g in grp) { const ok = grp[g].every(a => S.c[a.id]); if (ok) g[0] == "M" ? mo++ : as++ }
+      const left = Math.max(0, 28 - td + 1), pc = Math.round(dn / tot * 100);
+      $("sub").textContent = "Today: " + dt(td) + ", Oct " + td + ". Target: finish everything by Oct 28.";
+      $("stats").innerHTML = [[left, "days left (till Oct 28)"], [Math.max(0, 30 - td), "days to Assignment 8"], [mo + "/13", "modules done"], [as + "/2", "assignments done"]].map(a => '<div class="c"><div class="n">' + a[0] + '</div><div class="l">' + a[1] + '</div></div>').join("") + '<div class="c" style="grid-column:1/-1"><div class="l">Overall progress: ' + pc + '% (' + f(dn) + ' of ' + f(tot) + ' planned work)</div><div class="bar"><i style="width:' + pc + '%"></i></div></div>';
+      let al = "";
+      const od = all.filter(a => a.d < td && !S.c[a.id]), om = od.reduce((s, a) => s + a.x[1], 0);
+      if (od.length) {
+        const fl = D.filter(x => x[2] && x[0] >= td && x[0] <= 28).map(x => x[0]);
+        const sp = D.filter(x => x[2] && x[0] >= td && x[0] <= 28).reduce((s, x) => s + x[2], 0); let m = "You missed " + od.length + " task(s) (about " + f(om) + "). ";
+        if (fl.length && om <= sp) m += "Cover them in the catch-up slot on Oct " + fl[0] + (fl.length > 1 ? " and the next catch-up slots" : "") + ". Do them first, then the normal tasks.";
+        else m += "Catch-up days cannot hold all of it. Do about " + Math.ceil(Math.max(0, om - sp) / Math.max(1, left)) + " extra minutes per day, or use Oct 29 as a buffer. Do missed MUST tasks first.";
+        al += '<div class="c box r"><b>Catch-up needed</b><br>' + m + '<ul>' + od.slice(0, 6).map(a => "<li>Oct " + a.d + ": " + a.x[0] + "</li>").join("") + (od.length > 6 ? "<li>and " + (od.length - 6) + " more</li>" : "") + "</ul></div>";
+      } else if (td > 15) al += '<div class="c box"><b>On track.</b> No missed tasks. Keep going.</div>';
+      const tt = D.find(x => x[0] == td);
+      if (tt) { const rem = tt[3].filter((x, i) => !S.c[td + "-" + i]); al += '<div class="c box w"><b>Today (Oct ' + td + '): ' + tt[1] + '</b><br>' + (rem.length ? rem.length + " task(s) left, about " + f(rem.reduce((s, x) => s + x[1], 0)) + "." : "All done for today. Great work!") + "</div>" }
+      $("alerts").innerHTML = al; tm();
+      $("days").innerHTML = D.map(([d, t, fx, ts], n) => {
+        const ids = ts.map((x, i) => d + "-" + i), dd = ids.filter(i => S.c[i]).length, full = dd == ts.length;
+        const pl = ts.reduce((s, x) => s + x[1], 0), dm = ts.reduce((s, x, i) => s + (S.c[ids[i]] ? x[1] : 0), 0);
+        const bd = full ? '<span class="bd ok">Done</span>' : d == td ? '<span class="bd t">Today</span>' : d < td ? '<span class="bd m">Missed</span>' : fx ? '<span class="bd f">Catch-up</span>' : "";
+        const av = S.h[d] ?? 6; let hint = "";
+        if (!full && pl / 60 > av) {
+          const mv = ts.filter((x, i) => !x[2] && !S.c[ids[i]]); const nf = (D.find(x => x[2] && x[0] > d) || [29])[0];
+          hint = "<p>You have " + av + "h but plan is " + f(pl) + ". Do the MUST tasks first." + (mv.length ? " Move 'can move' tasks (" + f(mv.reduce((s, x) => s + x[1], 0)) + ") to Oct " + nf + "." : "") + "</p>"
+        }
+        const op = O[d] ?? (d == td);
+        return '<details class="day' + (d == td ? " today" : "") + '" data-d="' + d + '"' + (op ? " open" : "") + '><summary><div class="r1"><b>' + (d <= 28 ? "Day " + (d - 14) + " · " : "Extra · ") + "Oct " + d + " " + dt(d) + "</b>" + bd + '</div><div class="tt">' + t + " · " + f(pl) + '</div><div class="bar"><i style="width:' + Math.round(dm / pl * 100) + '%"></i></div></summary>' +
+          ts.map((x, i) => '<label class="tk' + (S.c[ids[i]] ? " d" : "") + '"><input type="checkbox" data-id="' + ids[i] + '"' + (S.c[ids[i]] ? " checked" : "") + '><span>' + x[0] + "<em>~" + f(x[1]) + " · " + (x[2] ? "MUST" : "can move") + "</em></span></label>").join("") +
+          '<div class="hr"><div class="tm2">Time worked: <b data-lv="' + d + '">' + fs(lg(d)) + '</b><button data-st="' + d + '">' + (S.r && S.r.d == d ? "⏹ Stop" : "▶ Start") + '</button><span>Fix by hand (hours):</span><input type="number" min="0" max="24" step="0.25" data-w="' + d + '" value="' + (lg(d) / 60).toFixed(2) + '"></div><div style="margin-top:8px">Hours I can give this day: <input type="number" min="0" max="12" step="0.5" data-h="' + d + '" value="' + av + '">' + hint + "</div></div></details>"
+      }).join("");
+    }
+    document.addEventListener("change", e => {
+      const t = e.target;
+      if (t.dataset.id) { t.checked ? S.c[t.dataset.id] = 1 : delete S.c[t.dataset.id]; sv(); render() }
+      else if (t.dataset.h) { S.h[t.dataset.h] = parseFloat(t.value) || 0; sv(); render() }
+      else if (t.dataset.w) { const d = t.dataset.w; T()[d] = Math.max(0, (parseFloat(t.value) || 0) * 60); if (S.r && S.r.d == d) S.r.s = Date.now(); sv(); render() }
+    });
+    document.addEventListener("toggle", e => { const d = e.target.dataset && e.target.dataset.d; if (d) O[d] = e.target.open }, true);
+    const T = () => S.t || (S.t = {}), pd = n => String(n).padStart(2, "0");
+    const lg = d => (T()[d] || 0) + (S.r && S.r.d == d ? (Date.now() - S.r.s) / 60000 : 0);
+    const fs = m => { const s = Math.round(m * 60); return Math.floor(s / 3600) + "h " + pd(Math.floor(s % 3600 / 60)) + "m " + pd(s % 60) + "s" };
+    const ff = m => f(Math.round(m)) || "0m";
+    function tm() {
+      let tw = 0, dl = 0, rem = 0;
+      D.forEach(([d, t, fx, ts]) => { const l = lg(d); tw += l; if (l >= 1) dl++; if (d <= 28) ts.forEach((x, i) => { if (!S.c[d + "-" + i]) rem += x[1] }) });
+      const left = Math.max(1, 28 - td + 1), need = rem / left, avg = dl ? tw / dl : 0;
+      let h = [[fs(lg(td)), "worked today"], [ff(tw), "total worked"], [ff(avg), "average per working day"], [ff(need), "planned work left, per day"]].map(a => '<div class="c"><div class="n" style="font-size:18px">' + a[0] + '</div><div class="l">' + a[1] + '</div></div>').join("");
+      const m = !dl ? "Press Start on a day card when you begin studying." : avg < need * 0.9 ? "Your average time (" + ff(avg) + ") is less than the plan needs (" + ff(need) + " per day). Try to add some time, or use the catch-up slots." : "Your pace is good. Keep going.";
+      $("tm").innerHTML = h + '<div class="c box' + (dl && avg < need * 0.9 ? " w" : "") + '" style="grid-column:1/-1;margin:0">' + m + "</div>";
+      document.querySelectorAll("[data-lv]").forEach(e => e.textContent = fs(lg(e.dataset.lv)))
+    }
+    document.addEventListener("click", e => {
+      const b = e.target.closest("button[data-st]"); if (!b) return; const d = +b.dataset.st;
+      if (S.r) { const r = S.r; T()[r.d] = (T()[r.d] || 0) + (Date.now() - r.s) / 60000; S.r = null; if (r.d != d) S.r = { d, s: Date.now() } } else S.r = { d, s: Date.now() }; sv(); render()
+    });
+    setInterval(() => { if (S.r) tm() }, 1000);
+    $("ex").onclick = () => { $("bk").value = btoa(JSON.stringify(S)); $("msg").textContent = "Copy this code." };
+    $("im").onclick = () => { try { S = JSON.parse(atob($("bk").value.trim())); S.r = null; sv(); render(); $("msg").textContent = "Imported." } catch (e) { $("msg").textContent = "Invalid code." } };
+    $("rs").onclick = () => { if ($("rs").dataset.s) { S = { c: {}, h: {} }; sv(); render(); $("rs").textContent = "Reset all"; delete $("rs").dataset.s } else { $("rs").dataset.s = 1; $("rs").textContent = "Tap again to confirm" } };
+    render();
+  </script>
+</body>
+
+</html>
